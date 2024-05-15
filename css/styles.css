@@ -1,0 +1,49 @@
+/*New Todo Page*/
+
+.newtodo-container {
+    max-width: 600px;
+    max-height: 850px;
+    margin: 110px auto;
+    margin-bottom: 70px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.form-text{
+    font-size: 13px !important;
+}
+
+.newtodo-btn{
+    width:200px;
+}
+
+.errorFormField{
+    color:red;
+    font-size: 14px;
+    padding:5px 0px;
+}
+
+/*New User Page*/
+
+.newuser-container {
+    max-width: 400px;
+    max-height: 850px;
+    margin: 110px auto;
+    margin-bottom: 70px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.form-text{
+    font-size: 13px !important;
+}
+
+.newuser-btn{
+    width:200px;
+}
+
+.errorFormField{
+    color:red;
+    font-size: 14px;
+    padding:5px 0px;
+}
