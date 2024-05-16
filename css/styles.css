@@ -47,3 +47,11 @@
     font-size: 14px;
     padding:5px 0px;
 }
+
+/*User Todo Page*/
+
+.todo-container{
+    max-width: 800px;
+    max-height: 850px;
+    margin:50px auto;
+}
