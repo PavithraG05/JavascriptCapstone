@@ -1,26 +1,10 @@
 "use strict";
 
-let registerBtn = document.getElementById("registerBtn");
-registerBtn.addEventListener("click",validateForm);
 var user={};
 
-function validateForm(){
-    user={};
-    console.log("****Form validation Begins****");
-    validateName("name","nameError");
-    validateUserName("username","usernameError");
-    validatePassword("password","passwordError");
-    validateConfirmPassword("confirmPassword","password","confirmPasswordError");
-    console.log("****Form validated****");
-}
-
-function validateName(id, errorId){
-    let nameFormElement = document.getElementById(`${id}`);
-    //let type_nameFormValue = document.getElementById(`${id}`).type;
-    let nameFormValue = nameFormElement.value;
-    //console.log(nameFormValue ,typeof nameFormValue);
-    let error_div = document.getElementById(`${errorId}`);
-    //console.log(`Cleared ${id} error`);
+function validateName(id, error_div){
+    let nameFormValue = id.value;
+    id.style.border = "1px solid #dee2e6";
     error_div.innerHTML = ``;
     if(nameFormValue != null && nameFormValue != undefined && nameFormValue != '' && nameFormValue != 0)
     {
@@ -28,31 +12,25 @@ function validateName(id, errorId){
         let userRegexMatch = regex.test(nameFormValue);
 
         if(userRegexMatch){
-            user[`${id}`] = `${nameFormValue}`;
+            user['name'] = `${nameFormValue}`;
             console.log(`Name: ${nameFormValue}, ${JSON.stringify(user)}`);
         }
         else{
-            let error_regex_div = document.getElementById(`${errorId}`);
-            //let error_regex_msg = id.charAt(0).toUpperCase() + id.slice(1);
-            error_regex_div.innerHTML = `Name must include only letters`;
-            console.log(`Name must include only letters`);
+            error_div.innerHTML = `Name must include only letters`;
+            id.style.border = "1px solid #dc3545";
+            console.log(`Name must include only letters (a-zA-Z)`);
         }  
     }
     else{
-        let error_div = document.getElementById(`${errorId}`);
         console.log(`Enter valid ${id}`);
-        //let error_msg = id.charAt(0).toUpperCase() + id.slice(1);
+        id.style.border = "1px solid #dc3545";
         error_div.innerHTML = `Name should not be empty`;
     }
 }
 
-function validateUserName(id, errorId){
-    let usernameFormElement = document.getElementById(`${id}`);
-    //let type_usernameFormValue = document.getElementById(`${id}`).type;
-    let usernameFormValue = usernameFormElement.value;
-    //console.log(usernameFormValue ,typeof usernameFormValue);
-    let error_div = document.getElementById(`${errorId}`);
-    //console.log(`Cleared ${id} error`);
+function validateUserName(id, error_div){
+    let usernameFormValue = id.value;
+    id.style.border = "1px solid #dee2e6";
     error_div.innerHTML = ``;
 
     if(usernameFormValue != null && usernameFormValue != undefined && usernameFormValue != '' && usernameFormValue != 0)
@@ -68,46 +46,40 @@ function validateUserName(id, errorId){
             .then(response => response.json())
             .then(data => {
                 if(!data.available){
-                    let error_regex_div = document.getElementById(`${errorId}`);
-                    //let error_regex_msg = id.charAt(0).toUpperCase() + id.slice(1);
-                    error_regex_div.innerHTML = `Username already exists`;
+                    error_div.innerHTML = `Username already exists`;
+                    id.style.border = "1px solid #dc3545";
                     console.log(`Username already exists`);
                 }
                 else{
-                    user[`${id}`] = `${usernameFormValue}`;
+                    user['username'] = `${usernameFormValue}`;
                     console.log(`Username: ${usernameFormValue}, ${JSON.stringify(user)}`);
                 }
             })
             .catch(err => {
                 let text = `Error in checking username existence. Please Try again`;
-                let error_regex_div = document.getElementById(`${errorId}`);
-                //let error_regex_msg = id.charAt(0).toUpperCase() + id.slice(1);
-                error_regex_div.innerHTML = `${text}`;
+                error_div.innerHTML = `${text}`;
+                id.style.border = "1px solid #dc3545";
                 console.log(`Error in checking username existence. Please Try again`);
             });
         }
         else{
-            let error_regex_div = document.getElementById(`${errorId}`);
-            //let error_regex_msg = id.charAt(0).toUpperCase() + id.slice(1);
-            error_regex_div.innerHTML = `Username must contain alphanumeric characters`;
-            console.log(`Username must contain alphanumeric characters`);
+            error_div.innerHTML = `Username must contain alphanumeric characters only`;
+            id.style.border = "1px solid #dc3545";
+            console.log(`Username must contain alphanumeric characters only`);
         }  
     }
     else{
-        let error_div = document.getElementById(`${errorId}`);
+        
         console.log(`Enter valid ${id}`);
-        //let error_msg = id.charAt(0).toUpperCase() + id.slice(1);
         error_div.innerHTML = `Username should not be empty`;
+        id.style.border = "1px solid #dc3545";
     }
 }
 
-function validatePassword(id, errorId){
-    let passwordFormElement = document.getElementById(`${id}`);
-    //let type_passwordFormElement = document.getElementById(`${id}`).type;
-    let passwordFormValue = passwordFormElement.value;
-    //console.log(passwordFormValue ,typeof passwordFormValue);
-    let error_div = document.getElementById(`${errorId}`);
-    //console.log(`Cleared ${id} error`);
+function validatePassword(id, error_div){
+    
+    let passwordFormValue = id.value;
+    id.style.border = "1px solid #dee2e6";
     error_div.innerHTML = ``;
 
     if(passwordFormValue != null && passwordFormValue != undefined && passwordFormValue != '' && passwordFormValue != 0)
@@ -116,55 +88,91 @@ function validatePassword(id, errorId){
         let passwordRegexMatch = regex.test(passwordFormValue);
         console.log(`Password: ${passwordFormValue}, ${passwordRegexMatch}`);
         if(!passwordRegexMatch){
-            let error_regex_div = document.getElementById(`${errorId}`);
-            //let error_regex_msg = id.charAt(0).toUpperCase() + id.slice(1);
-            error_regex_div.innerHTML = `Password must be strong`;
+            error_div.innerHTML = `Password must be strong`;
+            id.style.border = "1px solid #dc3545";
             console.log(`Password must be strong`);
         }
     }
     else{
-        let error_div = document.getElementById(`${errorId}`);
         console.log(`Enter valid ${id}`);
-        //let error_msg = id.charAt(0).toUpperCase() + id.slice(1);
         error_div.innerHTML = `Password should not be empty`;
+        id.style.border = "1px solid #dc3545";
     }
 }
 
-function validateConfirmPassword(id, id2, errorId){
-    let confirmPasswordFormElement = document.getElementById(`${id}`);
-    //let type_passwordFormElement = document.getElementById(`${id}`).type;
-    let confirmPasswordFormValue = confirmPasswordFormElement.value;
-    //console.log(confirmPasswordFormValue ,typeof confirmPasswordFormValue);
-    let error_div = document.getElementById(`${errorId}`);
-    //console.log(`Cleared ${id} error`);
+function validateConfirmPassword(id, id2, error_div){
+    
+    let confirmPasswordFormValue = id.value;
+    id.style.border = "1px solid #dee2e6";
     error_div.innerHTML = ``;
 
     if(confirmPasswordFormValue != null && confirmPasswordFormValue != undefined && confirmPasswordFormValue != '' && confirmPasswordFormValue != 0)
     {
-        let PassFormElement = document.getElementById(`${id2}`);
-        //let type_passwordFormElement = document.getElementById(`${id}`).type;
-        let PassFormValue = PassFormElement.value;
+        let PassFormValue = id2.value;
         if(PassFormValue !== confirmPasswordFormValue){
-            let error_div = document.getElementById(`${errorId}`);
-            console.log(`Password did not match`);
+           console.log(`Password did not match`);
             error_div.innerHTML = `Password did not match`;
+            id.style.border = "1px solid #dc3545";
         }
         else{
-            user[`${id2}`] = `${PassFormValue}`;
+            user['password'] = `${PassFormValue}`;
             console.log(`Confirm Password ${PassFormValue}, ${JSON.stringify(user)}`);
         }
     }
     else{
-        let error_div = document.getElementById(`${errorId}`);
         console.log(`Enter valid ${id}`);
-        //let error_msg = id.charAt(0).toUpperCase() + id.slice(1);
         error_div.innerHTML = `Please enter the password again`;
+        id.style.border = "1px solid #dc3545";
     }
+}
+
+function hideShowPassword(password){
+    if(password.type === 'password'){
+        password.type = "text";
+    }
+    else{
+        password.type = "password";
+    }
+}
+
+function validateFormField(){
+    console.log(user);
+    validateField("fname","nameError");
+    validateField("username","usernameError");
+    validateField("password","passwordError");
+    validateField("confirmPassword","confirmPasswordError");
+}
+
+function validateField(fieldId, fieldErrorId){
+    
+    let fieldElement = document.getElementById(fieldId)
+    let fieldValue = fieldElement.value;
+    let fieldErrorDiv = document.getElementById(fieldErrorId);
+    if(fieldValue != null && fieldValue != undefined && fieldValue != '' && fieldValue != 0)
+    {
+        validateUserObject();
+    }
+    else{
+        if(fieldId === "fname"){
+            fieldElement.style.border = "1px solid #dc3545";
+            fieldErrorDiv.innerHTML = `Name should not be empty`;
+        }
+        else{
+            fieldElement.style.border = "1px solid #dc3545";
+            let error_msg = fieldId.charAt(0).toUpperCase() + fieldId.slice(1);
+            fieldErrorDiv.innerHTML = `${error_msg} should not be empty`;
+        }
+    }
+    
+}
+
+function validateUserObject(){
     console.log(`length: ${Object.keys(user).length}`);
     if(Object.keys(user).length === 3){
-        console.log("****Todo created****");
+        console.log("****User created****");
         console.log(user);
         addUser();
+        user={};
     }
 }
 
@@ -174,7 +182,9 @@ function addUser(){
         headers:{"content-type":"application/json"},
         body: JSON.stringify(user)
     })
-    .then(response => response.json())
+    .then(response => {
+        response.json();
+    })
     .then (json => {
         //let text = `Todo task has been added successfully`;
         //console.log(text);
@@ -189,3 +199,4 @@ function addUser(){
         message.innerHTML = text;
     });
 }
+

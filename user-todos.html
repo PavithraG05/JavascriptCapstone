@@ -17,20 +17,125 @@
 
         </header>
         <main>
-            <div class="container">
-                <div class="todo-container bg-light rounded-0">
-                    <form>
-                        <!--name field-->
-                        <div class="form-group p-2">
-                            <label for="username">Username*</label>
-                            <select class="form-select" id="username" onchange="getUserId(username)">
-                                <option value="" >Choose an option</option>
-                            </select>
-                            <div id="todoUserApiError">
-
+            <div class="todosArea">
+                <div class="row">
+                    <div class="col-3 bg-light">
+                        <div class="todo-aside-container">
+                            <div class="todo-aside-title-info">
+                                To-Do Task Count Information
+                            </div>
+                            <hr>
+                            <div class="todo-aside-categories-list">
+                                <span class="todo-aside-list-title">
+                                    Task Categories
+                                </span>
+                                <ul class="todo-aside-title" id="todo-allCategory">
+                                    <li  class="todo-aside-sublist ">Total Tasks &nbsp;&nbsp;
+                                        <span>
+                                            <span id="todo-alltask-count"></span>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <div id="category_listerror"></div>
+                            </div>
+                            <hr>
+                            <div class="todo-aside-status-list">
+                                <span class="todo-aside-list-title">Task Status</span>
+                                <ul class="todo-aside-title">
+                                    <li class="todo-aside-sublist">
+                                        <i class="bi bi-check-circle-fill"></i>&nbsp;Completed&nbsp;&nbsp;
+                                        <span>
+                                            <span id="todo-completed-count"></span>
+                                        </span>
+                                    </li>
+                                    <li class="todo-aside-sublist">
+                                        <i class="bi bi-exclamation-circle-fill"></i>&nbsp;Pending&nbsp;&nbsp;
+                                        <span>
+                                            <span id="todo-pending-count"></span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="todo-aside-priority-list">
+                                <span class="todo-aside-list-title">
+                                    Task Priority
+                                </span>
+                                <ul class="todo-aside-title">
+                                    <li class="todo-aside-sublist">
+                                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>&nbsp;High&nbsp;&nbsp;
+                                        <span>
+                                            <span id="todo-high-count"></span>
+                                        </span>
+                                    </li>
+                                    <li class="todo-aside-sublist">
+                                        <i class="bi bi-exclamation-triangle-fill text-warning"></i>&nbsp;Medium&nbsp;&nbsp;
+                                        <span>
+                                            <span id="todo-medium-count"></span>
+                                        </span>
+                                    </li>
+                                    <li class="todo-aside-sublist">
+                                        <i class="bi bi-exclamation-triangle-fill text-success"></i>&nbsp;Low&nbsp;&nbsp;
+                                        <span>
+                                            <span id="todo-low-count"></span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="col-8 g-2">
+                        <div class="container">
+                            <div class="todo-container rounded-0">
+                                <form>
+                                    <!--name field-->
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <div class="form-group">
+                                                <select class="form-select" id="username" onchange="getUserId(username)">
+                                                        <option value=""  >Select an user to view their todos</option>
+                                                </select>
+                                               <div id="todoUserApiError" class="errorFormField">
+            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <button class="btn todoAddBtnClass" type="button" id="addTodosBtn"><i class="bi bi-plus-square-fill"></i>Add Todo Task</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </form>
+
+                        <div class="row row-cols-lg-1 todo-card-container gx-0" id="todo-cards">
+                            
+                            <div class="card todo-card">
+                                <div class="card-header todo-category-title">
+                                    <p>
+                                        <span class="todo-category-color-dot bg-warning"></span>&nbsp;&nbsp;Category
+                                        <span class="todo-icons bg-light">
+                                            <i class="bi bi-exclamation-triangle-fill text-danger"></i>&nbsp;
+                                            <span id='todo-priority-text-${todo.id}'>Low</span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="card-body todo-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h6 class="card-title todo-desc">Go to gym</h6>
+                                        </div>
+                                        <div class="col-3">
+                                            <h6 class="todo-status">Completed</h6>
+                                        </div>
+                                    </div>
+                                    <p class="card-text"><i class="bi bi-calendar3"></i>&nbsp;&nbsp;Due date: 12/4/2024</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

@@ -1,7 +1,7 @@
 /*New Todo Page*/
 
 .newtodo-container {
-    max-width: 600px;
+    max-width: 550px;
     max-height: 850px;
     margin: 110px auto;
     margin-bottom: 70px;
@@ -26,7 +26,7 @@
 /*New User Page*/
 
 .newuser-container {
-    max-width: 400px;
+    max-width: 500px;
     max-height: 850px;
     margin: 110px auto;
     margin-bottom: 70px;
@@ -48,10 +48,110 @@
     padding:5px 0px;
 }
 
+.help-text{
+    text-align: justify;
+    padding-left: 15px;
+}
+
+.bi-eye-fill{
+    margin-left: -45px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+    padding-right: 15px;
+    float: right;
+    cursor: pointer;
+}
+
 /*User Todo Page*/
+.todosArea{
+    font-family:Calibri, 'Trebuchet MS', sans-serif;
+}
 
 .todo-container{
-    max-width: 800px;
-    max-height: 850px;
-    margin:50px auto;
+    margin:100px 0px 50px 0px;
 }
+
+.todo-category-color-dot{
+    height: 13px;
+    width: 13px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.todo-category-title{
+    height: 36px;
+    font-size: 15px;
+}
+
+.todo-details{
+    color: black;
+}
+
+.todo-card-container{
+    padding: 0px;
+}
+
+.todo-card{
+    width:20vw;
+    border-width: 0px !important;
+}
+
+.todo-status{
+    float: right;
+    font-size: 15px;
+}
+
+.todo-desc{
+    font-size: 15px;
+    padding-left: 0px;
+}
+
+.todo-body{
+    font-size:13px;
+}
+
+.todo-icons{
+    float:right;
+}
+
+#addTodosBtn{
+    width:100%;
+    background-color: #E0E0E0;
+}
+
+.bi-plus-square-fill{
+    float: left;
+}
+
+/*Todo aside styles*/
+
+.todo-aside-container{
+    margin-top: 110px;
+    padding: 0px 40px;
+}
+
+.todo-aside-title-info{
+    padding: 10px 25px;
+}
+
+.todo-aside-categories-list, .todo-aside-status-list, .todo-aside-priority-list{
+    padding: 10px 45px;
+}
+
+.todo-aside-sublist{
+    padding: 5px 0px;
+}
+
+.todo-aside-title{
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+    list-style-type: none;
+}
+
+.square {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+  }

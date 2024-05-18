@@ -23,35 +23,54 @@
                     <form>
                         <!--name field-->
                         <div class="form-group p-2">
-                            <label for="name" class="form-label">Full Name*</label>
-                            <input type="text" class="form-control" id="name">
+                            <label for="fname" class="form-label">Full Name*</label>
+                            <input type="text" class="form-control" id="fname" onblur='validateName(fname,nameError)'>
                             <div id="nameError" class="errorFormField">
                                 
                             </div>
+        
                         </div>
                         
                         <!--username field-->
                         <div class="form-group p-2">
                             <label for="username" class="form-label">Username*</label>
-                            <input type="text" class="form-control" id="username">
+                            <input type="text" class="form-control" id="username" onblur="validateUserName(username,usernameError)">
                             <div id="usernameError" class="errorFormField">
                                 
                             </div>
+                            <ul class="form-text help-text">
+                                <li>Your username must be 6 characters long.</li>
+                                <li>Your username must contain both letters and numbers.</li>
+                                <li>Your username should not contain any special characters.</li>
+                            </ul>
                         </div>
                     
                         <!--Password-->
                         <div class="form-group p-2">
                             <label for="password" class="form-label">Password* </label>
-                            <input type="password" class="form-control" id="password">
+                            <div class="password-container">
+                            <input type="password" class="form-control" id="password" onblur="validatePassword(password,passwordError)">
+                            <i id="eye-icon" class="bi bi-eye-fill" onclick="hideShowPassword(password)"></i>
+                            </div>
                             <div id="passwordError" class="errorFormField">
                                 
                             </div>
+                            <ul class="form-text help-text">
+                                <li>Your password must be at least 8 characters long.</li>
+                                <li>Your password must contain at least one of each of the following:</li>
+                                <ul>
+                                    <li>Numbers (0-9)</li>
+                                    <li>Letters (a-z)</li>
+                                    <li>Capital letters (A-Z)</li>
+                                    <li>Special characters (!@#$%^&*()-+=)</li>
+                                </ul>
+                            </ul>
                         </div>
 
                         <!--Confirm Password-->
                         <div class="form-group p-2">
                             <label for="confirmPassword" class="form-label">Confirm Password*</label>
-                            <input type="password" class="form-control" id="confirmPassword">
+                            <input type="password" class="form-control" id="confirmPassword" onchange="validateConfirmPassword(confirmPassword,password,confirmPasswordError)">
                             <div id="confirmPasswordError" class="errorFormField">
                                 
                             </div>
@@ -61,7 +80,7 @@
         
                         <!--register button-->
                         <div class="row p-3 justify-content-center">
-                            <button class="btn bg-warning newuser-btn rounded-0" type="button" id="registerBtn">REGISTER</button>
+                            <button class="btn bg-warning newuser-btn rounded-0" type="button" id="registerBtn" onclick="validateFormField()">REGISTER</button>
                         </div>
                     </form>
                 </div>

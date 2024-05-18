@@ -24,7 +24,7 @@
                         <!--user name field-->
                         <div class="form-group p-2">
                             <label for="username">Username*</label>
-                            <select class="form-select" id="username">
+                            <select class="form-select" id="username" onblur="validateFields(username,useridError)">
                                 <option value="" >Choose an option</option>
                             </select>
                             <div id="useridError" class="errorFormField">
@@ -34,7 +34,7 @@
                         <!--Category-->
                         <div class="form-group p-2">
                             <label for="category">Category*</label>
-                            <select class="form-select" id="category">
+                            <select class="form-select" id="category" onblur="validateFields(category,categoryError)">
                                 <option value="" >Choose an option</option>
                             </select>
                             <div id="categoryError" class="errorFormField">
@@ -44,9 +44,9 @@
                         <!--Description-->
                         <div class="form-group p-2">
                             <label for="description" class="form-label">Description*</label>
-                            <textarea class="form-control" id="description" rows="3"></textarea>
-                            <div id="descHelpBlock" class="form-text text-primary">
-                                Specify the task description in minimum 15 words.
+                            <textarea class="form-control" id="description" rows="3" onblur="validateFields(description,descriptionError)"></textarea>
+                            <div id="descHelpBlock" class="form-text">
+                                Specify the task description in minimum words.
                             </div>
                             <div id="descriptionError" class="errorFormField">
                                 
@@ -55,7 +55,7 @@
                         <!--deadline field-->
                         <div class="form-group p-2">
                             <label for="deadline">Deadline*</label>
-                            <input type="date" class="form-control" id="deadline">
+                            <input type="date" class="form-control" id="deadline" onblur="validateFields(deadline,deadlineError)">
                             <div id="deadlineError" class="errorFormField">
                                
                             </div>
@@ -65,15 +65,15 @@
                         <div class="form-group p-2">
                             <label for="priority">Priority*</label>
                             <div class="form-check form-check-inline mx-3">
-                                <input class="form-check-input" type="radio" name="priority" id="low" value="low">
+                                <input class="form-check-input" type="radio" name="priority" id="low" value="low" onchange="validateRadio(priority,priorityError)">
                                 <label class="form-check-label" for="low">Low</label>
                             </div>
                             <div class="form-check form-check-inline mx-3">
-                                <input class="form-check-input" type="radio" name="priority" id="medium" value="medium">
+                                <input class="form-check-input" type="radio" name="priority" id="medium" value="medium" onchange="validateRadio(priority,priorityError)">
                                 <label class="form-check-label" for="medium">Medium</label>
                             </div>
                             <div class="form-check form-check-inline mx-3">
-                                <input class="form-check-input" type="radio" name="priority" id="high" value="high">
+                                <input class="form-check-input" type="radio" name="priority" id="high" value="high" onchange="validateRadio(priority,priorityError)">
                                 <label class="form-check-label" for="high">High</label>
                             </div>
                             <div id="priorityError" class="errorFormField">
@@ -84,7 +84,7 @@
         
                         <!--register button-->
                         <div class="row p-3 justify-content-center">
-                            <button class="btn bg-warning newtodo-btn rounded-0" type="button" id="addBtn">ADD TODO</button>
+                            <button class="btn bg-warning newtodo-btn rounded-0" type="button" id="addBtn" onclick="validateForm()">ADD TODO</button>
                         </div>
                     </form>
                     <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
