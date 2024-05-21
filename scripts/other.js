@@ -52,4 +52,11 @@ function removeError(errorId){
     error_div.innerHTML = ``;
     console.log("****Cleared Name Error message****")
 }
+
+<span id='todo-priority-text-${todo.id}'></span>
+<i class="bi bi-exclamation-triangle-fill" id='todo-priority-${todo.id}'></i>&nbsp;
+priority.classList.add('text-danger','border','border-danger');
 */
+
+
+console.log(JSON.stringify({'completed':false}));

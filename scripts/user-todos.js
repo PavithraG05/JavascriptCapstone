@@ -120,7 +120,7 @@ function createList(categoryName){
     `<li id="todo-Category-list-${category_name}" class="todo-aside-sublist ">
     <i class="bi bi-circle-fill" id="circle-${category_name}"></i>&nbsp;${categoryName} &nbsp;&nbsp;
     <span>
-    <span id="todo${category_name}Count"></span>
+    <span id="todo${category_name}Count" class="badge text-bg-secondary todo-count-badge"></span>
     </span>
     </li>
     `
@@ -164,25 +164,29 @@ function createcard(todo){
     }
     const content = 
     `<div class="card todo-card">
-        <div class="card-header todo-category-title">
+        <div class="card-header todo-category-header">
             <p>
-                <span class="todo-category-color-dot" id="todo-category-${todo.id}"></span>&nbsp;&nbsp;${todo.category}
+                <span class="todo-category-title todo-category-color-dot" id="todo-category-${todo.id}"></span>&nbsp;&nbsp;${todo.category}&nbsp;&nbsp;
+                <span class="badge" id='todo-priority-${todo.id}'>${todo.priority}</span>
                 <span class="todo-icons">
-                    <i class="bi bi-exclamation-triangle-fill" id='todo-priority-${todo.id}'></i>&nbsp;
-                    <span id='todo-priority-text-${todo.id}'></span>
+                    
+                    <i class="bi bi-star" id='todo-star-icon-${todo.id}'></i>
+                    <i class="bi bi-pencil-square"></i>
+                    <i class="bi bi-trash"></i>
+                    <i class="bi" id='todo-complete-icon-${todo.id}' data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="changeStatus('todo-complete-icon-${todo.id}','${todo.id}','${todo.description}')"></i>
                 </span>
             </p>
         </div>
         <div class="card-body todo-body">
             <div class="row">
                 <div class="col-9">
-                    <h6 class="card-title todo-desc">${todo.description}</h6>
+                    <h6 class="card-title todo-desc" id='todo-desc-${todo.id}'>${todo.description}</h6>
                 </div>
                 <div class="col-3">
-                    <h6 class="todo-status">${todo.completed}</h6>
+                    <a><h6 class="todo-status" id='todo-status-${todo.id}'>${todo.completed}</h6></a>
                 </div>
             </div>
-            <p class="card-text"><i class="bi bi-calendar3"></i>&nbsp;&nbsp;Due date: ${todo.deadline}</p>
+            <p class="card-text" id='todo-deadline-${todo.id}'><i class="bi bi-calendar3"></i>&nbsp;&nbsp;Due date: ${todo.deadline}</p>
         </div>
     </div>`
     todoCard.innerHTML += content;
@@ -195,23 +199,35 @@ function addClass(todo){
     
     let priority = document.getElementById(`todo-priority-${todo.id}`);
     console.log(priority);
+
+    let description = document.getElementById(`todo-desc-${todo.id}`);
+    console.log(description);
+
+    let deadline = document.getElementById(`todo-deadline-${todo.id}`);
+    console.log(description);    
     
-    let priority_text = document.getElementById(`todo-priority-text-${todo.id}`);
-    console.log(priority_text);
+    let status = document.getElementById(`todo-status-${todo.id}`);
+    console.log(status); 
+
+    let markComplete = document.getElementById(`todo-complete-icon-${todo.id}`);
+    //let starred = document.getElementById(`todo-star-icon-${todo.id}`);
+
+    //let priority_text = document.getElementById(`todo-priority-text-${todo.id}`);
+    //console.log(priority_text);
 
     if(todo.priority === 'high' || todo.priority === 'High'){
-        priority.classList.add('text-danger');
-        priority_text.textContent = "High";
+        priority.classList.add('text-bg-danger');
+        priority.textContent = "High";
         high_count ++;
     }
     else if(todo.priority === 'Medium' || todo.priority === 'medium'){
-        priority.classList.add('text-warning');
-        priority_text.textContent = "Medium";
+        priority.classList.add('text-bg-warning');
+        priority.textContent = "Medium";
         medium_count ++;
     }
     else{
-        priority.classList.add('text-success');
-        priority_text.textContent = "Low";
+        priority.classList.add('text-bg-success');
+        priority.textContent = "Low";
         low_count ++;
     }
     console.log(priority);
@@ -240,6 +256,16 @@ function addClass(todo){
         work_count ++;
     }
     console.log(category);
+
+    if(todo.completed === 'Completed'){
+        description.classList.add('strike');
+        deadline.classList.add('strike');
+        markComplete.classList.add('bi-check-circle-fill');
+    }
+    else{
+        markComplete.classList.add('bi-check-circle');
+    }
+
     addCount();
 }
 
@@ -279,4 +305,66 @@ function addCount(){
 
     const alltaskId = document.getElementById("todo-alltask-count");
     alltaskId.textContent = personal_count+work_count+errand_count+help_count+financial_count+household_count;
+}
+
+function changeStatus(statusId,taskid,taskDesc){
+    console.log(`button clicked ${statusId} ${taskid} ${taskDesc}`);
+
+    const statusElement = document.getElementById(statusId);
+    const modal_body = document.getElementById("todo_modal_body");
+    const modal_btn = document.getElementsByClassName("update_status_btn");
+    
+    //modal_btn[0].id = `${taskid}`;
+    console.log(modal_btn[0]);
+
+    if(statusElement.className == 'bi bi-check-circle'){
+        console.log("to be marked as Completed");
+        modal_body.textContent = `Are you sure you want to mark the task: '${taskDesc}' as completed?`;
+        modal_btn[0].id = `pending-${taskid}`
+    }
+    else{
+        console.log("to be marked as Pending");
+        modal_body.textContent = `Are you sure you want to mark the task: '${taskDesc}' as pending?`;
+        modal_btn[0].id = `completed-${taskid}`
+    }
+
+} 
+
+function updateStatus(task_status_id){
+    console.log(typeof `${task_status_id}`);
+    let status_substring = `${task_status_id}`.indexOf('-');
+    console.log(status_substring);
+    let curr_status = `${task_status_id}`.substring(0,status_substring);
+    let taskID = `${task_status_id}`.substring(status_substring+1);
+    console.log(curr_status,taskID);
+    let completed_status = '';
+    if(curr_status === 'pending'){
+        completed_status = true;
+    }
+    else{
+        completed_status = false;
+    }
+    console.log(completed_status,taskID);
+    
+    fetch(`http://localhost:8083/api/todos/${taskID}`,{
+        method:"PUT",
+        headers:{"content-type":"application/json"},
+        body: JSON.stringify({'completed':`${completed_status}`})
+    })
+    .then(response => {
+        response.json();
+    })
+    .then (json => {
+        //let text = `Todo task has been added successfully`;
+        //console.log(text);
+        //let message = document.getElementById("toast_msg");
+        //message.innerHTML=text;
+        //$('.toast').toast('show');
+        alert('Todo status has been updated successfully');
+    })
+    .catch(err => {
+        let text = `Error in updating user status. Please Try again`;
+        let message = document.getElementById("todoUserApiError");
+        message.innerHTML = text;
+    });
 }

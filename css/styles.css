@@ -69,20 +69,23 @@
 }
 
 .todo-container{
-    margin:100px 0px 50px 0px;
+    margin:90px 5px 50px 35px;
 }
 
 .todo-category-color-dot{
-    height: 13px;
-    width: 13px;
+    height: 14px;
+    width: 14px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
 }
 
+.todo-category-header{
+    height: 45px;
+}
+
 .todo-category-title{
-    height: 36px;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .todo-details{
@@ -90,7 +93,7 @@
 }
 
 .todo-card-container{
-    padding: 0px;
+    padding: 0px 20px 0px 50px;
 }
 
 .todo-card{
@@ -100,11 +103,10 @@
 
 .todo-status{
     float: right;
-    font-size: 15px;
 }
 
 .todo-desc{
-    font-size: 15px;
+    font-size: 17x;
     padding-left: 0px;
 }
 
@@ -116,8 +118,39 @@
     float:right;
 }
 
+.strike{
+    text-decoration: line-through;
+}
+
+.bi-star, .bi-pencil-square, .bi-trash,.bi-check-circle{
+    padding-left: 10px;
+    font-size: 1.2rem;
+    color: black;
+    cursor: pointer;
+}
+
+.bi-x-circle{
+    padding-left: 10px;
+    font-size: 1.2rem;
+    color: black;
+    cursor: pointer;
+}
+.bi-check-circle-fill{
+    padding-left: 10px;
+    font-size: 1.2rem;
+    color: green;
+    cursor: pointer;
+}
+
+.completebtn{
+    float: right;
+    font-size: 15px !important;
+    padding: 0;
+}
+
 #addTodosBtn{
-    width:100%;
+    width:80%;
+    float: right;
     background-color: #E0E0E0;
 }
 
@@ -128,30 +161,106 @@
 /*Todo aside styles*/
 
 .todo-aside-container{
-    margin-top: 110px;
+    margin-top: 90px;
     padding: 0px 40px;
 }
 
-.todo-aside-title-info{
-    padding: 10px 25px;
+.todo-aside-title-info, .todo-aside-list-title{
+    padding: 10px 15px;
 }
 
-.todo-aside-categories-list, .todo-aside-status-list, .todo-aside-priority-list{
+.todo-aside-title-info{
+    font-size: 17px;
+}
+
+.todo-aside-list{
     padding: 10px 45px;
+    list-style-type: none;
 }
 
 .todo-aside-sublist{
     padding: 5px 0px;
 }
 
-.todo-aside-title{
-    padding: 0px 0px 0px 0px;
-    margin: 0;
-    list-style-type: none;
+.todo-aside-list-title{
+    font-size: 16px;
 }
 
-.square {
-    height: 50px;
-    width: 50px;
-    background-color: #555;
+.todo-count-badge {
+    height: 19px;
+    width:21px;
+    background-color: goldenrod;
   }
+
+#completedIcon{
+    padding: 5px 0px;
+    font-size: 1rem;
+    color: black;
+    cursor: pointer;
+}
+
+
+/* Index page*/
+.navbar{
+    /* background-color: navy; */ 
+    height: 55px;
+    background-color: #5d5eff;
+}
+
+.navbar-brand img{
+    width:140px;
+    height:30px;
+    margin-left: 55px;
+}
+
+.header-nav a{
+    font-size:21px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:white;
+    background-color: #5d5eff;
+}
+
+.bi-person-circle, .bi-cart4{
+    color: white;
+    font-size: 1.4rem;
+}
+
+.home-body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.home_banner{
+    height: 820px;
+    width:100%;
+}
+
+.home-image{
+    height: 55vw;
+    width: 70%;
+}
+
+.home-features-title{
+    padding: 20px 20px 10px 40px;
+}
+
+.home_blockquote{
+    padding: 40px 20px 20px 20px;
+}
+
+.home_blockquote_text{
+    font-family:"Lugrasimo";
+    font-size: 40px;
+    text-align: center;
+}
+
+.lugrasimo-regular {
+    font-family: "Lugrasimo", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.home-card-img-top{
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}

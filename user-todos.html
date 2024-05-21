@@ -13,26 +13,53 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
     <body>
-        <header>
-
+        <header class="bg-primary"> 
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                <div class="container-fluid gx-0">
+                    <a class="navbar-brand" href="index.html" >
+                        <img src="images/text-1716182278752.png" alt="3D fonts">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav header-nav">
+                            <a class="nav-link header-nav-link active text-white" aria-current="page" href="index.html">Home</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Todos
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="new-todo.html">Add Todos</a></li>
+                                    <li><a class="dropdown-item" href="user-todos.html">View Todos</a></li>
+                                </ul>
+                            </li>
+                
+                            <a class="nav-link header-nav-link" href="new-user.html"><i class="bi bi-person-circle"></i>Register</a>
+                        </div>
+                    </div> 
+                </div>
+            </nav>
         </header>
         <main>
             <div class="todosArea">
                 <div class="row">
                     <div class="col-3 bg-light">
                         <div class="todo-aside-container">
+                            
                             <div class="todo-aside-title-info">
-                                To-Do Task Count Information
+                                To-Do Task Countometer
                             </div>
                             <hr>
+                            <br>
                             <div class="todo-aside-categories-list">
                                 <span class="todo-aside-list-title">
                                     Task Categories
                                 </span>
-                                <ul class="todo-aside-title" id="todo-allCategory">
+                                <ul class="todo-aside-list" id="todo-allCategory">
                                     <li  class="todo-aside-sublist ">Total Tasks &nbsp;&nbsp;
                                         <span>
-                                            <span id="todo-alltask-count"></span>
+                                            <span id="todo-alltask-count" class="badge text-bg-secondary"></span>
                                         </span>
                                     </li>
                                 </ul>
@@ -41,17 +68,17 @@
                             <hr>
                             <div class="todo-aside-status-list">
                                 <span class="todo-aside-list-title">Task Status</span>
-                                <ul class="todo-aside-title">
+                                <ul class="todo-aside-list">
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-check-circle-fill"></i>&nbsp;Completed&nbsp;&nbsp;
+                                        <i class="bi bi-check-circle-fill" id="completedIcon"></i>&nbsp;Completed&nbsp;&nbsp;
                                         <span>
-                                            <span id="todo-completed-count"></span>
+                                            <span id="todo-completed-count" class="badge text-bg-secondary"></span>
                                         </span>
                                     </li>
                                     <li class="todo-aside-sublist">
                                         <i class="bi bi-exclamation-circle-fill"></i>&nbsp;Pending&nbsp;&nbsp;
                                         <span>
-                                            <span id="todo-pending-count"></span>
+                                            <span id="todo-pending-count" class="badge text-bg-secondary"></span>
                                         </span>
                                     </li>
                                 </ul>
@@ -61,23 +88,23 @@
                                 <span class="todo-aside-list-title">
                                     Task Priority
                                 </span>
-                                <ul class="todo-aside-title">
+                                <ul class="todo-aside-list">
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>&nbsp;High&nbsp;&nbsp;
+                                        <i class="bi bi-flag-fill text-danger"></i>&nbsp;High&nbsp;&nbsp;
                                         <span>
-                                            <span id="todo-high-count"></span>
+                                            <span id="todo-high-count" class="badge text-bg-secondary"></span>
                                         </span>
                                     </li>
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-exclamation-triangle-fill text-warning"></i>&nbsp;Medium&nbsp;&nbsp;
+                                        <i class="bi bi-flag-fill text-warning"></i>&nbsp;Medium&nbsp;&nbsp;
                                         <span>
-                                            <span id="todo-medium-count"></span>
+                                            <span id="todo-medium-count" class="badge text-bg-secondary"></span>
                                         </span>
                                     </li>
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-exclamation-triangle-fill text-success"></i>&nbsp;Low&nbsp;&nbsp;
+                                        <i class="bi bi-flag-fill text-success"></i>&nbsp;Low&nbsp;&nbsp;
                                         <span>
-                                            <span id="todo-low-count"></span>
+                                            <span id="todo-low-count" class="badge text-bg-secondary"></span>
                                         </span>
                                     </li>
                                 </ul>
@@ -85,12 +112,13 @@
                             <hr>
                         </div>
                     </div>
+                    
                     <div class="col-8 g-2">
                         <div class="container">
                             <div class="todo-container rounded-0">
                                 <form>
                                     <!--name field-->
-                                    <div class="row">
+                                    <div class="row justify-content-between">
                                         <div class="col-7">
                                             <div class="form-group">
                                                 <select class="form-select" id="username" onchange="getUserId(username)">
@@ -101,7 +129,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="col-3">
                                             <button class="btn todoAddBtnClass" type="button" id="addTodosBtn"><i class="bi bi-plus-square-fill"></i>Add Todo Task</button>
                                         </div>
                                     </div>
@@ -112,25 +140,58 @@
                         <div class="row row-cols-lg-1 todo-card-container gx-0" id="todo-cards">
                             
                             <div class="card todo-card">
-                                <div class="card-header todo-category-title">
+                                <div class="card-header todo-category-header">
                                     <p>
-                                        <span class="todo-category-color-dot bg-warning"></span>&nbsp;&nbsp;Category
+                                        <span class="todo-category-title todo-category-color-dot bg-primary"></span>&nbsp;&nbsp;Personal Task&nbsp;
+                                        <span class=" text-bg-warning text-black badge">Medium</span>
                                         <span class="todo-icons bg-light">
-                                            <i class="bi bi-exclamation-triangle-fill text-danger"></i>&nbsp;
-                                            <span id='todo-priority-text-${todo.id}'>Low</span>
+                                            
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-pencil-square"></i>
+                                            <i class="bi bi-trash"></i>
+                                            <i class="bi bi-check-circle"></i>
                                         </span>
                                     </p>
                                 </div>
                                 <div class="card-body todo-body">
                                     <div class="row">
                                         <div class="col-9">
-                                            <h6 class="card-title todo-desc">Go to gym</h6>
+                                            <h6 class="card-title todo-desc">To-do task brief description</h6>    
                                         </div>
                                         <div class="col-3">
-                                            <h6 class="todo-status">Completed</h6>
+                                            
                                         </div>
                                     </div>
                                     <p class="card-text"><i class="bi bi-calendar3"></i>&nbsp;&nbsp;Due date: 12/4/2024</p>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="card todo-card">
+                                <div class="card-header todo-category-header">
+                                    <p>
+                                        <span class="todo-category-title todo-category-color-dot bg-primary"></span>&nbsp;&nbsp;Personal Task&nbsp;
+                                        <span class=" text-bg-success badge">Low</span>
+                                        <span class="todo-icons bg-light">
+                                            
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-pencil-square"></i>
+                                            <i class="bi bi-trash"></i>
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="card-body todo-body">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h6 class="card-title todo-desc"><s>To-do task brief description</s></h6>    
+                                        </div>
+                                        <div class="col-3">
+                                            
+                                        </div>
+                                    </div>
+                                    <p class="card-text"><i class="bi bi-calendar3"></i>&nbsp;&nbsp;<s>Due date: 12/4/2024</s></p>
                                 </div>
                             </div>
                             
@@ -138,6 +199,21 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    
+                    <div class="modal-body" id="todo_modal_body">
+
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn btn-primary update_status_btn" onclick="updateStatus(id)">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+              
         </main>
         <footer>
             
