@@ -5,8 +5,11 @@
     max-height: 850px;
     margin: 110px auto;
     margin-bottom: 70px;
+    margin-left: 50px;
     padding: 30px;
     border-radius: 5px;
+    background-color: whitesmoke;
+    
 }
 
 .form-text{
@@ -15,6 +18,7 @@
 
 .newtodo-btn{
     width:200px;
+    background-color: #5d5eff !important;
 }
 
 .errorFormField{
@@ -23,15 +27,40 @@
     padding:5px 0px;
 }
 
+.newtodo_body{
+    display: flex;
+}
+
+.pencil-image{
+    height: 41.3vw;
+    width:100%;
+    float: right;
+    opacity: 0.8;
+}
+.newtodo_image_left{
+height:50vw;
+width:40%;
+margin: 110px 0px 0px 150px;
+}
+
 /*New User Page*/
+
+.newuser-image{
+    display: block;
+    margin:100px 0px 100px 80px;
+    width: 120%;
+    height: 48vw;
+    opacity: 0.8;
+}
 
 .newuser-container {
     max-width: 500px;
     max-height: 850px;
-    margin: 110px auto;
+    margin: 80px auto;
     margin-bottom: 70px;
     padding: 30px;
     border-radius: 5px;
+    background-color: #F0F0F0;
 }
 
 .form-text{
@@ -40,6 +69,7 @@
 
 .newuser-btn{
     width:200px;
+    background-color: #5d5eff !important;
 }
 
 .errorFormField{
@@ -62,6 +92,7 @@
     float: right;
     cursor: pointer;
 }
+
 
 /*User Todo Page*/
 .todosArea{
@@ -86,6 +117,7 @@
 
 .todo-category-title{
     font-size: 16px;
+    font-weight: 600 !important;
 }
 
 .todo-details{
@@ -118,6 +150,10 @@
     float:right;
 }
 
+.todo_select{
+    font-weight: 550 !important;
+}
+
 .strike{
     text-decoration: line-through;
 }
@@ -129,17 +165,16 @@
     cursor: pointer;
 }
 
-.bi-x-circle{
-    padding-left: 10px;
-    font-size: 1.2rem;
-    color: black;
-    cursor: pointer;
-}
 .bi-check-circle-fill{
     padding-left: 10px;
     font-size: 1.2rem;
     color: green;
     cursor: pointer;
+}
+
+.bi-check-circle:hover, .bi-check-circle-fill:hover{
+    opacity: 0.8;
+    font-size: 1.1rem;
 }
 
 .completebtn{
@@ -151,7 +186,7 @@
 #addTodosBtn{
     width:80%;
     float: right;
-    background-color: #E0E0E0;
+    background-color: gainsboro;
 }
 
 .bi-plus-square-fill{
@@ -165,12 +200,13 @@
     padding: 0px 40px;
 }
 
-.todo-aside-title-info, .todo-aside-list-title{
+.todo-aside-title-info{
     padding: 10px 15px;
 }
 
 .todo-aside-title-info{
     font-size: 17px;
+    font-weight: 600 !important;
 }
 
 .todo-aside-list{
@@ -183,14 +219,14 @@
 }
 
 .todo-aside-list-title{
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 600 !important;
+    padding: 10px 15px 10px 45px;
 }
 
-.todo-count-badge {
-    height: 19px;
-    width:21px;
-    background-color: goldenrod;
-  }
+.todo_countBadge{
+    float: right;
+}
 
 #completedIcon{
     padding: 5px 0px;
@@ -199,6 +235,46 @@
     cursor: pointer;
 }
 
+.todo-notodos-image{
+    height:35vw;
+    width: 90%;
+    opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+    
+    .container{
+       margin: 0;
+       float: none;
+    }
+
+    #addTodosBtn{
+        width:100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .todoAside, .newuser-image{
+        display: none;
+    }
+    .container{
+        margin: 0;
+        float: none;
+     }
+ 
+     #addTodosBtn{
+         width:100%;
+     }
+}
+
+@media (max-width: 1200px) {
+    .todo-aside-list-title, .todo-aside-title-info{
+        font-size: 15px;   
+    }
+    .newuser-image{
+        display: none;
+    }
+}
 
 /* Index page*/
 .navbar{
@@ -210,7 +286,7 @@
 .navbar-brand img{
     width:140px;
     height:30px;
-    margin-left: 55px;
+    margin-left: 30px;
 }
 
 .header-nav a{
@@ -220,9 +296,24 @@
     background-color: #5d5eff;
 }
 
-.bi-person-circle, .bi-cart4{
+.bi-person-circle, .bi-house-door-fill{
     color: white;
     font-size: 1.4rem;
+}
+
+.todo-header-dropdown{
+    padding: 0 !important;
+}
+
+.todo-header-dropdown-list{
+    background-color: #5d5eff !important;
+}
+
+.todo-header-dropdown-list:hover{
+    opacity: 0.9 !important;
+    background-color: #5d5eff !important;
+    color: white !important;
+    font-size: 22px;
 }
 
 .home-body{
@@ -230,27 +321,42 @@
 }
 
 .home_banner{
-    height: 820px;
+    height: 520px;
     width:100%;
+    background-color: #FFFE5D;
 }
 
 .home-image{
-    height: 55vw;
-    width: 70%;
+    height: 35vw;
+    width: 100%;
+    background-color: #e0dffd;
 }
 
 .home-features-title{
-    padding: 20px 20px 10px 40px;
+    padding: 10px 10px 10px 40px;
+    font-size: 23px;
+    background-color: aliceblue;
 }
 
 .home_blockquote{
-    padding: 40px 20px 20px 20px;
+    padding: 100px 20px 20px 20px;
+    font-size: 40px;
+    text-align: center;
+    /*
+    background-color: #FFFE5D;
+    background-image: url('../images/test3.webp');
+    opacity:0.3;
+    background-image: url('../images/test2.jpeg');
+    background-repeat: no-repeat;
+    background-image: url('../images/todo-3.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    */
 }
+
 
 .home_blockquote_text{
     font-family:"Lugrasimo";
-    font-size: 40px;
-    text-align: center;
 }
 
 .lugrasimo-regular {
@@ -263,4 +369,13 @@
     width: 100%;
     height: 25vw;
     object-fit: cover;
+}
+
+.home-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5d5eff !important;
+    color: white !important;
+    font-size: 18px !important;
 }

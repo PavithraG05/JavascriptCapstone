@@ -14,6 +14,7 @@ var help_count = 0;
 
 window.onload = function(){
     let username = document.getElementById("username");
+    username.style.border = "1px solid #808080";
     fetchUsername(username);
     fetchCategories();
     //triggerEvent();
@@ -81,7 +82,7 @@ function getUserId(username){
     console.log(`UserID: ${usernameValue}`);
     let useridError = document.getElementById("todoUserApiError");
     useridError.innerHTML = '';
-    username.style.border = "1px solid #dee2e6";
+    username.style.border = "1px solid #808080";
     if(usernameValue != null && usernameValue != undefined && usernameValue != '' && usernameValue != 0){
         getTodos(usernameValue);
     }
@@ -119,9 +120,7 @@ function createList(categoryName){
     const categoryListContent = 
     `<li id="todo-Category-list-${category_name}" class="todo-aside-sublist ">
     <i class="bi bi-circle-fill" id="circle-${category_name}"></i>&nbsp;${categoryName} &nbsp;&nbsp;
-    <span>
-    <span id="todo${category_name}Count" class="badge text-bg-secondary todo-count-badge"></span>
-    </span>
+    <span id="todo${category_name}Count" class="badge text-bg-secondary todo_countBadge"></span>  
     </li>
     `
     allCategoryList.innerHTML += categoryListContent;
@@ -166,14 +165,15 @@ function createcard(todo){
     `<div class="card todo-card">
         <div class="card-header todo-category-header">
             <p>
-                <span class="todo-category-title todo-category-color-dot" id="todo-category-${todo.id}"></span>&nbsp;&nbsp;${todo.category}&nbsp;&nbsp;
+                <span class="todo-category-title todo-category-color-dot" id="todo-category-${todo.id}"></span>
+                <span class="todo-category-title">&nbsp;&nbsp;${todo.category}&nbsp;&nbsp;</span>
                 <span class="badge" id='todo-priority-${todo.id}'>${todo.priority}</span>
                 <span class="todo-icons">
                     
                     <i class="bi bi-star" id='todo-star-icon-${todo.id}'></i>
                     <i class="bi bi-pencil-square"></i>
                     <i class="bi bi-trash"></i>
-                    <i class="bi" id='todo-complete-icon-${todo.id}' data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="changeStatus('todo-complete-icon-${todo.id}','${todo.id}','${todo.description}')"></i>
+                    <i class="bi" id='todo-complete-icon-${todo.id}' data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="changeStatus(\`todo-complete-icon-${todo.id}\`,\`${todo.id}\`,\`${todo.description}\`);"></i>
                 </span>
             </p>
         </div>
@@ -319,12 +319,12 @@ function changeStatus(statusId,taskid,taskDesc){
 
     if(statusElement.className == 'bi bi-check-circle'){
         console.log("to be marked as Completed");
-        modal_body.textContent = `Are you sure you want to mark the task: '${taskDesc}' as completed?`;
+        modal_body.textContent = `Are you sure you want to mark the task: "${taskDesc}" as completed?`;
         modal_btn[0].id = `pending-${taskid}`
     }
     else{
         console.log("to be marked as Pending");
-        modal_body.textContent = `Are you sure you want to mark the task: '${taskDesc}' as pending?`;
+        modal_body.textContent = `Are you sure you want to mark the task: "${taskDesc}" as pending?`;
         modal_btn[0].id = `completed-${taskid}`
     }
 
@@ -338,6 +338,7 @@ function updateStatus(task_status_id){
     let taskID = `${task_status_id}`.substring(status_substring+1);
     console.log(curr_status,taskID);
     let completed_status = '';
+
     if(curr_status === 'pending'){
         completed_status = true;
     }

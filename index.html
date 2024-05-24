@@ -28,18 +28,18 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav header-nav">
-                            <a class="nav-link header-nav-link active text-white" aria-current="page" href="index.html">Home</a>
-                            <li class="nav-item dropdown">
+                            <a class="nav-link header-nav-link active text-white" aria-current="page" href="index.html"><i class="bi bi-house-door-fill"></i>&nbsp;Home</a>
+                            <li class="nav-item header-nav-link dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Todos
+                                    <i class="bi bi-pencil-fill"></i>&nbsp;Todos
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="new-todo.html">Add Todos</a></li>
-                                    <li><a class="dropdown-item" href="user-todos.html">View Todos</a></li>
+                                <ul class="dropdown-menu todo-header-dropdown">
+                                    <li><a class="dropdown-item todo-header-dropdown-list" href="new-todo.html">Add Todos</a></li>
+                                    <li><a class="dropdown-item todo-header-dropdown-list" href="user-todos.html">View Todos</a></li>
                                 </ul>
                             </li>
                 
-                            <a class="nav-link header-nav-link" href="new-user.html"><i class="bi bi-person-circle"></i>Register</a>
+                            <a class="nav-link header-nav-link todo_link " href="new-user.html"><i class="bi bi-person-circle"></i>&nbsp;Register</a>
                         </div>
                     </div> 
                 </div>
@@ -47,29 +47,35 @@
         </header>
         <main>
             <div class="row home-body">
-                <div class="col-lg-12 home_banner border border-danger bg-light">
-                    <img src="images/todo2.jpeg" class="home-image" alt="" class="border border-info">
+                
+                <!--
+                <div class="col-lg-8 home_banner border border-danger bg-light">
+                    <img src="images/todo.giff.gif" class="home-image" alt="">
                 </div>
+                -->
+                
+                
                 <!--Block quote-->
                 <div class="col-lg-12 home_blockquote border border-warning">
-                    <blockquote class="blockquote home_blockquote_text">
-                        <p>Today's to-do's, Tomorrow's triumphs</p>    
+                    <blockquote class="blockquote">
+                        <p class="home_blockquote_text">Today's to-do's, Tomorrow's triumphs</p>   
+                        <a class="btn home-btn" href="new-user.html" type="button">Get Started&nbsp;<i class="bi bi-arrow-right-circle-fill"></i></a> 
                     </blockquote>
                 </div>
 
                 <!--Features-->
                 <div class="col-lg-12 border border-primary">
                     <div>
-                        <h5 class="home-features-title">Explore all features "Dolister" has to offer</h5>
+                        <h5 class="home-features-title text-center">Explore all features "Dolister" has to offer</h5>
                     </div>
-                    <div class="row row-cols-3">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-3">
                         <div class="col px-5 py-2">
                             <div class="card rounded-0">
                                 <img src="images/home-feature-1.webp" class="home-card-img-top"
                                     alt="...">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">Features</h5>
-                                    <p>cronyms to show the expanded version on hover. Abbreviations have a default underline</p>
+                                    <h5 class="card-title">Organize Tasks Effectively</h5>
+                                    <p>Break down larger tasks into smaller tasks. <span class="text-primary">Categorize </span>tasks based on their nature, making it easier to focus and manage your time efficiently.</p>
                                 </div>
                             </div>
                         </div>
@@ -79,8 +85,8 @@
                                 <img src="images/home-feature-2.webp" class="home-card-img-top"
                                     alt="...">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">Features</h5>
-                                    <p>cronyms to show the expanded version on hover. Abbreviations have a default underline</p>
+                                    <h5 class="card-title">Set Your Priorities Straight</h5>
+                                    <p>Start by identifying the most important tasks that need to be completed. Consider <span class="text-primary">priority and deadline</span> to determine which tasks should be tackled first.</p>
                                 </div>
                             </div>
                         </div>
@@ -90,8 +96,8 @@
                                 <img src="images/home-feature-3.png" class="home-card-img-top"
                                     alt="...">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">Features</h5>
-                                    <p>cronyms to show the expanded version on hover. Abbreviations have a default underline</p>
+                                    <h5 class="card-title">Take Steps Towards Completion</h5>
+                                    <p>Stay focused and committed to making progress each day, celebrating your achievements along the way to maintain motivation by <span class="text-primary">marking the task as completed.</span></p>
                                 </div>
                             </div>
                         </div>
