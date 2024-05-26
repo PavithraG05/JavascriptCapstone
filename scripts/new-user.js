@@ -8,7 +8,7 @@ function validateName(id, error_div){
     error_div.innerHTML = ``;
     if(nameFormValue != null && nameFormValue != undefined && nameFormValue != '' && nameFormValue != 0)
     {
-        const regex = new RegExp('[a-zA-Z][a-zA-Z ]*');
+        const regex = new RegExp('^[a-zA-Z][a-zA-Z ]*$');
         let userRegexMatch = regex.test(nameFormValue);
 
         if(userRegexMatch){

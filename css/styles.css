@@ -37,6 +37,7 @@
     float: right;
     opacity: 0.8;
 }
+
 .newtodo_image_left{
 height:50vw;
 width:40%;
@@ -216,6 +217,7 @@ margin: 110px 0px 0px 150px;
 
 .todo-aside-sublist{
     padding: 5px 0px;
+    cursor: pointer;
 }
 
 .todo-aside-list-title{
@@ -254,8 +256,11 @@ margin: 110px 0px 0px 150px;
 }
 
 @media (max-width: 992px) {
-    .todoAside, .newuser-image{
+    .todoAside, .newuser-image, .newtodo_image_left{
         display: none;
+    }
+    .newtodo-container{
+        margin-left: 0;
     }
     .container{
         margin: 0;

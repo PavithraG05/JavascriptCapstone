@@ -11,6 +11,8 @@ var financial_count = 0;
 var work_count = 0;
 var errand_count = 0;
 var help_count = 0;
+var todoList_Copy={};
+var flag = 0;
 
 window.onload = function(){
     let username = document.getElementById("username");
@@ -76,6 +78,7 @@ function getUserId(username){
     work_count = 0;
     errand_count = 0;
     help_count = 0;
+    flag = 0;
 
     console.log("onchange event triggered");
     let usernameValue = username.value;
@@ -94,10 +97,12 @@ function getUserId(username){
 }
 
 function getTodos(usernameValue){
+    
     fetch(`http://localhost:8083/api/todos/byuser/${usernameValue}`)
         .then(response => response.json())
         .then(data => {
             //console.log(`${data}`);
+            todoList_Copy = data;
             let todoCard = document.getElementById("todo-cards");
             todoCard.innerHTML = '';
             for(let i=0;i<data.length;i++){
@@ -119,7 +124,7 @@ function createList(categoryName){
     let category_name = categoryName.replace(/\s/g, "");
     const categoryListContent = 
     `<li id="todo-Category-list-${category_name}" class="todo-aside-sublist ">
-    <i class="bi bi-circle-fill" id="circle-${category_name}"></i>&nbsp;${categoryName} &nbsp;&nbsp;
+    <i class="bi bi-circle-fill" id="circle-${category_name}"></i><span onclick="filterCategory('${categoryName}')">&nbsp;&nbsp;${categoryName} &nbsp;&nbsp;</span>
     <span id="todo${category_name}Count" class="badge text-bg-secondary todo_countBadge"></span>  
     </li>
     `
@@ -151,14 +156,18 @@ function createcard(todo){
     //let category = document.getElementById("todo-category");
     //let priority = document.getElementById("todo-priority");
 
-    if(todo.completed){
+    if(todo.completed === true || todo.completed === "Completed"){
         todo.completed = "Completed";
-        completed_count ++;
+        if(!flag){
+            completed_count ++;
+        }
         console.log(`Change to completed ${completed_count}`);
     }
     else{
         todo.completed = "Pending";
-        pending_count ++;
+        if(!flag){
+            pending_count ++;
+        }
         console.log(`Change to Pending ${pending_count}`);
     }
     const content = 
@@ -218,42 +227,60 @@ function addClass(todo){
     if(todo.priority === 'high' || todo.priority === 'High'){
         priority.classList.add('text-bg-danger');
         priority.textContent = "High";
-        high_count ++;
+        if(!flag){
+            high_count ++;
+        }
     }
     else if(todo.priority === 'Medium' || todo.priority === 'medium'){
         priority.classList.add('text-bg-warning');
         priority.textContent = "Medium";
-        medium_count ++;
+        if(!flag){
+            medium_count ++;
+        }
     }
     else{
         priority.classList.add('text-bg-success');
         priority.textContent = "Low";
-        low_count ++;
+        if(!flag){
+            low_count ++;
+        }
     }
     console.log(priority);
     if(todo.category === "Personal Task"){
         category.classList.add('bg-primary');
-        personal_count ++;
+        if(!flag){
+            personal_count ++;
+        }
     }
     else if(todo.category === "Household Task"){
         category.classList.add('bg-warning');
-        household_count ++;
+        if(!flag){
+            household_count ++;
+        }
     }
     else if(todo.category === "Financial Task"){
         category.classList.add('bg-danger');
-        financial_count ++;
+        if(!flag){
+            financial_count ++;
+        }
     }
     else if(todo.category === "Help Others"){
         category.classList.add('bg-dark');
-        help_count ++;
+        if(!flag){
+            help_count ++;
+        }
     }
     else if(todo.category === "Errand"){
         category.classList.add('bg-info');
-        errand_count ++;
+        if(!flag){
+            errand_count ++;
+        }
     }
     else{
         category.classList.add('bg-success');
-        work_count ++;
+        if(!flag){
+            work_count ++;
+        }
     }
     console.log(category);
 
@@ -368,4 +395,63 @@ function updateStatus(task_status_id){
         let message = document.getElementById("todoUserApiError");
         message.innerHTML = text;
     });
+}
+
+function filterCategory(filterCriteria){
+    console.log(JSON.stringify(todoList_Copy));
+    console.log(`${filterCriteria}`);
+    flag = 1;
+
+    let output = todoList_Copy.filter(listFiltered => listFiltered.category=== filterCriteria);
+    //const listFiltered = todoList_Copy.filter(filterTodoList(filterCriteria));
+    console.log(output);
+    let todoCard = document.getElementById("todo-cards");
+    todoCard.innerHTML = '';
+    for(let i=0;i<output.length;i++){
+        console.log(`UserID ${output[i].userid}Category ${output[i].category} description ${output[i].description} Deadline ${output[i].deadline} Priority${output[i].priority} Completed${output[i].completed}`)
+        createcard(output[i]);
+    }
+}
+
+function filterPriority(filterCriteria){
+    console.log(JSON.stringify(todoList_Copy));
+    console.log(`${filterCriteria}`);
+    flag = 1;
+
+    let output = todoList_Copy.filter(listFiltered => listFiltered.priority === filterCriteria);
+    //const listFiltered = todoList_Copy.filter(filterTodoList(filterCriteria));
+    console.log(output);
+    let todoCard = document.getElementById("todo-cards");
+    todoCard.innerHTML = '';
+    for(let i=0;i<output.length;i++){
+        console.log(`UserID ${output[i].userid}Category ${output[i].category} description ${output[i].description} Deadline ${output[i].deadline} Priority${output[i].priority} Completed${output[i].completed}`);
+        createcard(output[i]);
+    }
+}
+
+function filterStatus(filterCriteria){
+    console.log(JSON.stringify(todoList_Copy));
+    console.log(`${filterCriteria}`);
+    flag = 1;
+
+    let output = todoList_Copy.filter(listFiltered => listFiltered.completed === filterCriteria);
+    //const listFiltered = todoList_Copy.filter(filterTodoList(filterCriteria));
+    console.log(output);
+    let todoCard = document.getElementById("todo-cards");
+    todoCard.innerHTML = '';
+    for(let i=0;i<output.length;i++){
+        console.log(`UserID ${output[i].userid}Category ${output[i].category} description ${output[i].description} Deadline ${output[i].deadline} Priority${output[i].priority} Completed${output[i].completed}`);
+        createcard(output[i]);
+    }
+}
+
+function filterAll(){
+    
+    flag = 1;
+    let todoCard = document.getElementById("todo-cards");
+    todoCard.innerHTML = '';
+    for(let i=0;i<todoList_Copy.length;i++){
+        console.log(`UserID ${todoList_Copy[i].userid}Category ${todoList_Copy[i].category} description ${todoList_Copy[i].description} Deadline ${todoList_Copy[i].deadline} Priority${todoList_Copy[i].priority} Completed${todoList_Copy[i].completed}`);
+        createcard(todoList_Copy[i]);
+    }
 }

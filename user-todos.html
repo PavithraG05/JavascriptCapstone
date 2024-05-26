@@ -58,10 +58,10 @@
                                     Task Categories
                                 </span>
                                 <ul class="todo-aside-list" id="todo-allCategory">
-                                    <li  class="todo-aside-sublist ">Total Tasks &nbsp;&nbsp;
-                                        <span>
-                                            <span id="todo-alltask-count" class="badge text-bg-secondary todo_countBadge"></span>
-                                        </span>
+                                    <li  class="todo-aside-sublist ">
+                                        <span onclick="filterAll()">Total Tasks &nbsp;&nbsp;</span>
+                                        <span id="todo-alltask-count" class="badge text-bg-secondary todo_countBadge"></span>
+                                        
                                     </li>
                                 </ul>
                                 <div id="category_listerror"></div>
@@ -71,16 +71,16 @@
                                 <span class="todo-aside-list-title">Task Status</span>
                                 <ul class="todo-aside-list">
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-check-circle-fill" id="completedIcon"></i>&nbsp;Completed&nbsp;&nbsp;
-                                        <span>
-                                            <span id="todo-completed-count" class="badge text-bg-secondary todo_countBadge"></span>
-                                        </span>
+                                        <i class="bi bi-check-circle-fill" id="completedIcon"></i>
+                                        <span onclick="filterStatus(`Completed`)">&nbsp;Completed&nbsp;&nbsp;</span>
+                                        <span id="todo-completed-count" class="badge text-bg-secondary todo_countBadge"></span>
+                                        
                                     </li>
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-exclamation-circle-fill"></i>&nbsp;Pending&nbsp;&nbsp;
-                                        <span>
-                                            <span id="todo-pending-count" class="badge text-bg-secondary todo_countBadge"></span>
-                                        </span>
+                                        <i class="bi bi-exclamation-circle-fill"></i>
+                                        <span onclick="filterStatus(`Pending`)">&nbsp;Pending&nbsp;&nbsp;</span>
+                                        <span id="todo-pending-count" class="badge text-bg-secondary todo_countBadge"></span>
+                                        
                                     </li>
                                 </ul>
                             </div>
@@ -91,22 +91,22 @@
                                 </span>
                                 <ul class="todo-aside-list">
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-flag-fill text-danger"></i>&nbsp;High&nbsp;&nbsp;
-                                        <span>
-                                            <span id="todo-high-count" class="badge text-bg-secondary todo_countBadge"></span>
-                                        </span>
+                                        <i class="bi bi-flag-fill text-danger"></i>
+                                        <span onclick="filterPriority(`high`)">&nbsp;High&nbsp;&nbsp;</span>
+                                        <span id="todo-high-count" class="badge text-bg-secondary todo_countBadge"></span>
+                                        
                                     </li>
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-flag-fill text-warning"></i>&nbsp;Medium&nbsp;&nbsp;
-                                        <span>
-                                            <span id="todo-medium-count" class="badge text-bg-secondary todo_countBadge"></span>
-                                        </span>
+                                        <i class="bi bi-flag-fill text-warning"></i>
+                                        <span onclick="filterPriority(`medium`)">&nbsp;Medium&nbsp;&nbsp;</span>
+                                        <span id="todo-medium-count" class="badge text-bg-secondary todo_countBadge"></span>
+                                        
                                     </li>
                                     <li class="todo-aside-sublist">
-                                        <i class="bi bi-flag-fill text-success"></i>&nbsp;Low&nbsp;&nbsp;
-                                        <span>
-                                            <span id="todo-low-count" class="badge text-bg-secondary todo_countBadge"></span>
-                                        </span>
+                                        <i class="bi bi-flag-fill text-success"></i>
+                                        <span onclick="filterPriority(`low`)">&nbsp;Low&nbsp;&nbsp;</span>
+                                        <span id="todo-low-count" class="badge text-bg-secondary todo_countBadge"></span>
+                                        
                                     </li>
                                 </ul>
                             </div>
